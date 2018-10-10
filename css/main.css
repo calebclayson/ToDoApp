@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+
+.mdl-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+#newListItem {
+    padding: .5em;
+}
+
+#newListItem:focus {
+    outline: none;
+}
