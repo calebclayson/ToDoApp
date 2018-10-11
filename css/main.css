@@ -15,3 +15,16 @@ body {
 #newListItem:focus {
     outline: none;
 }
+
+.demo-list-control {
+    width: 300px;
+}
+
+#list-container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.mdl-list__item {
+    font-size: 1.3em;
+}
