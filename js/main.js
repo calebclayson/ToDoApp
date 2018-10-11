@@ -10,7 +10,41 @@ dialog.querySelector('.close').addEventListener('click', function () {
     dialog.close();
 });
 
-let increment = 1;
+let itemIncrement = 1;
+let listIncrement = 2;
+
+function addList () {
+    let listName;
+    let tab = `
+        <a href="#fixed-tab-${listIncrement}" class="mdl-layout__tab">Test</a>
+    `;
+    let section = `
+        <section class="mdl-layout__tab-panel" id="fixed-tab-${listIncrement}">
+            <div class="page-content">
+                <h1>lol</h1>
+                <ul class="demo-list-control mdl-list" id="list-container">
+                </ul>
+                <button class="show-modal mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+                    <i class="material-icons">add</i>
+                </button>
+                <dialog class="mdl-dialog">
+                    <div class="mdl-dialog__content">
+                        <p>
+                            Add List Item
+                        </p>
+                        <input type="text" id="newListItem">
+                    </div>
+                    <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+                        <button onclick="addItem()" type="button" class="mdl-button close">Done</button>
+                    </div>
+                </dialog>
+            </div>
+        </section>
+    `;
+    document.getElementById('tab-container').innerHTML += tab;
+    document.getElementById('main-content').innerHTML += section;
+    listIncrement++;
+}
 
 function addItem() {
     let whatToDo = document.getElementById('newListItem').value;
@@ -21,13 +55,13 @@ function addItem() {
                 ${whatToDo}
             </span>
             <span class="mdl-list__item-secondary-action">
-                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect mdl-js-ripple-effect--ignore-events is-upgraded" for="list-checkbox-${increment}" data-upgraded=",MaterialCheckbox,MaterialRipple">
-                    <input type="checkbox" id="list-checkbox-${increment}" class="mdl-checkbox__input">
-                <span class="mdl-checkbox__focus-helper"></span><span class="mdl-checkbox__box-outline"><span class="mdl-checkbox__tick-outline"></span></span><span class="mdl-checkbox__ripple-container mdl-js-ripple-effect mdl-ripple--center" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></label>
+                <label for="chkbox${itemIncrement}" class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                    <input type="checkbox" id="chkbox${itemIncrement}" class="mdl-checkbox__input">
+                </label> 
             </span>
         </li >
         `;
     document.getElementById('list-container').innerHTML += content;
-    increment++;
+    itemIncrement++;
     document.getElementById('newListItem').value = "";
 }
