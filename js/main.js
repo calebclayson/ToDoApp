@@ -29,7 +29,7 @@ let lists = [
     }
 ];
 
-let nextId = lists.length + 1;
+let nextId = lists.length;
 
 function displayLists () {
     $('.container').html('');
@@ -39,8 +39,8 @@ function displayLists () {
             <button class="btn btn-primary list-name" type="button" data-toggle="collapse" data-target="#List${lists[i].id}" aria-expanded="false" aria-controls="List${lists[i].id}">
                 ${lists[i].name}
             </button>
-            <div class="collapse" id="List${lists[i].id}">
-                <div class="card card-body row">
+            <div class="collapse show" id="List${lists[i].id}">
+                <div class="card card-body row input-container">
                     <div><input class="myinput" type="text"><button type="button" class="btn btn-primary" onclick="addListItem(this)">Add</button></div>
                 </div>
             </div>
@@ -74,17 +74,18 @@ function addListItem (e) {
         text: $(e).parent().children()[0].value,
         done: false
     }
-    let listIndex = $(e).parent().parent().parent().parent().parent().html().charAt(25);
-    let myname = $(e).parent().children()[0].value;
-    $(e).parent().parent().parent().append(`
-        <div class="card card-body row">
-            <div><i onclick="deleteItem(this)" class="trashcan fas fa-trash-alt"></i><span>${myname}</span></div>
-        </div>
-    `);
+    let listIndex = $(e).parent().parent().parent().parent().attr('class').charAt(4);
+    lists[listIndex].tasks.push(newTask);
     $(e).parent().children()[0].value = '';
+    displayLists();
 }
 
 function deleteItem (e) {
+    indexInTaskArray = $(e).parent().parent().index() - 1;
+    indexInListArray = $(e).parent().parent().parent().parent().index();
+
+    lists[indexInListArray].tasks.splice(indexInTaskArray, 1);
+
     $(e).parent().parent().animate({
         opacity: 0,
         left: "+=50"

@@ -12,12 +12,13 @@ body {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 2em;
     width: 2em;
     height: 2em;
+}
+
+.inner-add-popup {
+    margin-top: -.2em;
 }
 
 .row {
@@ -27,4 +28,17 @@ body {
 .trashcan {
     padding-right: 1em;
     color: red;
+}
+
+.myinput {
+    padding: .25em;
+    outline: none;
+    border: 1px solid #dadfea;
+    border-radius: 3px;
+    margin-right: 1em;
+    width: 60vw;
+}
+
+.input-container {
+    height: 5em;
 }
