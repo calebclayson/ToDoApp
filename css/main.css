@@ -7,6 +7,21 @@ body {
     margin-top: 1em;
 }
 
+.list-content-container {
+    display: flex;
+    width: 100%;
+}
+
+.list-trash {
+    transform: translateX(-20vw) translateY(25%);
+    position: absolute;
+    right: 0;
+}
+
+.list-trash:hover {
+    color: #ff9999;
+}
+
 .add-list-popup {
     border-radius: 50%;
     position: absolute;
@@ -27,7 +42,11 @@ body {
 
 .trashcan {
     padding-right: 1em;
-    color: red;
+    color: #16A2B8;
+}
+
+.trashcan:hover {
+    color:#ff4d4d;
 }
 
 .myinput {
@@ -36,9 +55,52 @@ body {
     border: 1px solid #dadfea;
     border-radius: 3px;
     margin-right: 1em;
-    width: 60vw;
+    width: 65vw;
 }
 
 .input-container {
     height: 5em;
+}
+
+.addListInput {
+    width: 100%;
+    outline: none;
+    border: 1px solid #dadfea;
+    padding: .25em;
+    border-radius: 3px;
+}
+
+.item-checkbox {
+    margin-right: 1em;
+}
+
+.add-item {
+    margin-right: 1em;
+}
+
+.edit {
+    margin-right: 1em;
+    color: #16A2B8;
+}
+
+.edit:hover {
+    color: #00cc44;
+}
+
+.edit-item-input {
+    padding: .25em;
+    outline: none;
+    border: 1px solid #dadfea;
+    border-radius: 3px;
+    margin-right: 1em;
+    width: 68vw;
+}
+
+@media only screen and (max-width: 750px) {
+    .myinput {
+        width: 39vw;
+    }
+    .edit-item-input {
+        width: 39vw;
+    }
 }
