@@ -113,3 +113,30 @@ function saveEdit(e) {
     lists[indexInListArray].tasks[indexInTaskArray] = newTask;
     displayLists();
 }
+
+class Data {
+    static saveList(listId, list){
+        let listString = JSON.stringify(list);
+        localStorage.setItem(listId, listString);
+    }
+    static getList(listId){
+        let list = localStorage.getItem(listId);
+        return JSON.parse(list);
+    }
+    static removeList(listId){
+        localStorage.removeItem(listId);
+    }
+}
+
+function loadLists() {
+    if(Data.getList(0) != null) {
+        lists = Data.getList(0);
+    } else {
+        lists = []
+    }
+    displayLists();
+}
+
+function unloadLists() {
+    Data.saveList(0, lists);
+}
